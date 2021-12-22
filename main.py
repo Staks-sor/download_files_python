@@ -1,5 +1,11 @@
+#pip install urllib3
+import random
+import urllib.request
+
 import requests
 import wget
+
+
 
 img_url = 'img_url'
 video_url = 'video_url'
@@ -48,7 +54,11 @@ def download_wget(url='', file_type='video'):
             
     except Exception as _ex:
         return 'Upps... Check the URL please!'
-    
+def download_image(url):
+    name = random.randrange(1,100)
+    fullname = str(name)+".jpg"
+    urllib.request.urlretrieve(url,fullname)     
+    download_image("url картинки")   
     
 def main():
     print(download_img(url=img_url))
@@ -56,7 +66,9 @@ def main():
     
     download_wget(url=img2_url, file_type='img')
     download_wget(url=video2_url, file_type='video')
+    download_image(url)
     
+
     
 if __name__ == '__main__':
     main()
